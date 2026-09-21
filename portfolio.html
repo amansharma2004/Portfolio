@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aman Sharma · Portfolio</title>
+<style>
+  :root{
+    --bg:#0b0d14;
+    --bg-soft:#12151f;
+    --gold-1:#f6e7b1;
+    --gold-2:#d9a84e;
+    --gold-3:#8a6a1f;
+    --text:#e8e6df;
+    --text-dim:#9a9ba3;
+    --line: rgba(255,255,255,0.08);
+    --radius: 2px;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background: radial-gradient(ellipse at 60% 0%, #171c29 0%, var(--bg) 55%);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    overflow-x:hidden;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; }
+  section{ padding: 120px 8vw; }
+
+  ::selection{ background: var(--gold-2); color:#111; }
+
+  /* ---------- Navbar---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; justify-content:flex-end; align-items:center;
+    gap:48px;
+    padding: 28px 8vw;
+    background: linear-gradient(180deg, rgba(11,13,20,0.85), transparent);
+    backdrop-filter: blur(4px);
+  }
+  nav a{
+    font-size:12px;
+    letter-spacing:2.5px;
+    color: var(--text-dim);
+    font-weight:600;
+    transition: color .25s ease;
+  }
+  nav a:hover{ color: var(--gold-1); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items:center;
+    padding: 0 8vw;
+    position:relative;
+  }
+  .hero-copy{ position:relative; z-index:2; }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:4px;
+    color: var(--gold-2);
+    font-weight:700;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(30px, 6vw, 50px);
+    line-height:1.02;
+    font-weight:700;
+    letter-spacing:1px;
+  }
+  .hero h1 .gold{
+    background: linear-gradient(100deg, var(--gold-1), var(--gold-2) 60%, var(--gold-3));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero-roles{
+    margin-top:26px;
+    font-size:13px;
+    letter-spacing:2px;
+    color: var(--text-dim);
+    display:flex; gap:14px; flex-wrap:wrap;
+  }
+  .hero-bio{
+    margin-top:22px;
+    max-width:440px;
+    color: var(--text-dim);
+    font-size:15px;
+    line-height:1.7;
+  }
+  .hero-cta{
+    display:flex; gap:16px; margin-top:40px; flex-wrap:wrap;
+  }
+  .btn{
+    padding:15px 28px;
+    font-size:12px;
+    letter-spacing:2px;
+    font-weight:700;
+    border-radius: var(--radius);
+    transition: all .25s ease;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary{
+    background: linear-gradient(100deg, var(--gold-1), var(--gold-2));
+    color:#161101;
+  }
+  .btn-primary:hover{ filter:brightness(1.1); transform: translateY(-2px); }
+  .btn-outline{
+    border:1px solid var(--line);
+    color: var(--text);
+  }
+  .btn-outline:hover{ border-color: var(--gold-2); color: var(--gold-1); }
+
+    .hero-photo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    width: 320px%;
+    height: 320px;
+    margin: 0 auto;
+        border-radius: 50% !important;
+    overflow: hidden !important;  
+    border: 2px solid var(--line);
+    z-index: 2;
+
+  }
+  .hero-photo .glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(217,168,78,0.25), transparent 70%);
+    filter: blur(35px);
+    z-index: 0;
+  }
+  .hero-photo img, .hero-photo .placeholder {
+    width: 100% !important;  
+    height: 100%  !important; 
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 50% !important; 
+    position: relative;
+    z-index: 1;
+    border: 2px solid var(--line);
+  }
+  .hero-photo .placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-align: center;
+    border: 1px dashed var(--gold-2);
+    background: var(--bg-soft);
+  }
+  .hero-quote{
+    position: relative; 
+    text-align: center; /* टेक्स्ट को बीच में अलाइन किया */
+    margin-top: 24px;   /* फोटो से नीचे 24px का गैप दिया */
+    max-width: 100%;    
+    z-index: 2;
+    font-size: 11px; 
+    letter-spacing: 2px; 
+    color: var(--text-dim); 
+    line-height: 1.8;
+  }
+  .hero-quote .sig{
+    font-family: 'Brush Script MT', cursive;
+    color: var(--gold-1);
+    font-size:22px;
+    margin-top:8px; 
+    display:block;
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section-head{ margin-bottom:56px; }
+  .section-head .eyebrow{ margin-bottom:10px; }
+  .section-head h2{
+    font-family: Georgia, serif;
+    font-size: clamp(28px, 3.4vw, 44px);
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    display:grid; grid-template-columns: 1fr 1fr; gap:60px;
+    border-top:1px solid var(--line);
+  }
+  .about p{ color: var(--text-dim); line-height:1.9; font-size:15px; margin-bottom:16px; }
+  .about-stats{ display:grid; grid-template-columns:1fr 1fr; gap:28px; align-self:start; }
+  .about-stats .num{
+    font-family: Georgia, serif; font-size:38px;
+    background: linear-gradient(100deg, var(--gold-1), var(--gold-2));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .about-stats .label{ font-size:12px; color: var(--text-dim); letter-spacing:1px; margin-top:4px; }
+
+  /* ---------- PROJECTS ---------- */
+  .projects{ border-top:1px solid var(--line); }
+  .project-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap:28px; }
+  .project-card{
+    background: var(--bg-soft);
+    border:1px solid var(--line);
+    border-radius: var(--radius);
+    padding:28px;
+    transition: transform .25s ease, border-color .25s ease;
+  }
+  .project-card:hover{ transform: translateY(-6px); border-color: var(--gold-3); }
+  .project-card .tag{ font-size:11px; letter-spacing:1.5px; color: var(--gold-2); margin-bottom:12px; display:block; }
+  .project-card h3{ font-family: Georgia, serif; font-size:22px; margin-bottom:10px; }
+  .project-card p{ color: var(--text-dim); font-size:14px; line-height:1.7; margin-bottom:18px; }
+  .project-card .stack{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
+  .project-card .stack span{
+    font-size:11px; padding:4px 10px; border:1px solid var(--line); border-radius:20px; color: var(--text-dim);
+  }
+  .project-card .links a{ font-size:12px; letter-spacing:1px; color: var(--gold-1); margin-right:18px; }
+  .project-card .links a:hover{ text-decoration:underline; }
+
+  /* ---------- SKILLS ---------- */
+  .skills{ border-top:1px solid var(--line); }
+  .skill-cols{ display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:40px; }
+  .skill-cols h4{ font-size:13px; letter-spacing:2px; color: var(--gold-2); margin-bottom:18px; }
+  .skill-cols li{ color: var(--text-dim); font-size:14px; padding:8px 0; border-bottom:1px solid var(--line); }
+
+  /* ---------- EXPERIENCE ---------- */
+  .experience{ border-top:1px solid var(--line); }
+  .timeline{ position:relative; padding-left:28px; border-left:1px solid var(--line); }
+  .timeline-item{ margin-bottom:44px; position:relative; }
+  .timeline-item::before{
+    content:''; position:absolute; left:-33px; top:4px;
+    width:9px; height:9px; border-radius:50%;
+    background: var(--gold-2);
+  }
+  .timeline-item .date{ font-size:12px; color: var(--gold-2); letter-spacing:1px; margin-bottom:6px; }
+  .timeline-item h3{ font-family: Georgia, serif; font-size:20px; margin-bottom:6px; }
+  .timeline-item .org{ color: var(--text-dim); font-size:13px; margin-bottom:10px; }
+  .timeline-item p{ color: var(--text-dim); font-size:14px; line-height:1.7; max-width:600px; }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ border-top:1px solid var(--line); text-align:center; }
+  .contact h2{ font-family: Georgia, serif; font-size: clamp(32px,5vw,56px); margin-bottom:20px; }
+  .contact p{ color: var(--text-dim); max-width:480px; margin:0 auto 36px; line-height:1.8; }
+  .contact-links{ display:flex; gap:28px; justify-content:center; flex-wrap:wrap; margin-top:40px; }
+  .contact-links a{ font-size:13px; letter-spacing:1.5px; color: var(--text-dim); }
+  .contact-links a:hover{ color: var(--gold-1); }
+
+  footer{
+    padding:32px 8vw; text-align:center; font-size:12px; color: var(--text-dim);
+    border-top:1px solid var(--line);
+  }
+
+  @media (max-width: 860px){
+    .hero{ grid-template-columns:1fr; padding-top:140px; text-align:left; }
+    .hero-photo{ height:50vh; margin-top:40px; }
+    .hero-quote{ display:none; }
+    .about{ grid-template-columns:1fr; }
+    nav{ gap:20px; padding:20px 6vw; }
+    section{ padding:80px 6vw; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
+  <a href="#experience">Experience</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- ================= Me ================= -->
+<section class="hero" id="top">
+  <div class="hero-copy">
+    <div class="eyebrow">AMAN SHARMA.</div>
+    <h1>TURNING DATA <br><span class="gold">INTO DECISIONS,<br>IDEAS INTO INTERFACES</span></h1>
+    <div class="hero-roles">
+      <span>FULL STACK DEVELOPER</span>
+      <span>·</span>
+      <span>Data Analyst</span>
+      <span>·</span>
+      <span>DATA SCIENCE</span>
+    </div>
+    <p class="hero-bio">
+      I turn bold ideas into seamless digital experiences. Where frontend
+      meets powerful backend, code transforms vision into impact.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-outline" href="https://drive.google.com/file/d/1pdRoJsMq8Rw70mQytC2z5QTjSYKEnEM6/view?usp=sharing" target="_blank">DOWNLOAD RESUME ↓</a>
+      <a class="btn btn-primary" href="#projects">EXPLORE MY WORK ↗</a>
+    </div>
+  </div>
+
+<div class="hero-photo">
+    <div class="glow"></div>
+    <img src="photo.jpg" alt="Aman Sharma">
+</div>
+
+<div class="hero-quote">
+   <!-- <“CODE IS MY CRAFT.<br>IMPACT IS MY GOAL.” -->
+   <!---- <span class="sig">Aman Sharma</span>>-->
+</div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div>
+    <div class="eyebrow">ABOUT</div>
+    <h2 style="font-family:Georgia,serif; font-size:34px; margin-bottom:24px;">A little about me</h2>
+    <p>I'm a recent B.Tech graduate in Computer Science (Data Science) who's now taking their first 
+      real steps into building things with code. Coming from a Data Science background gave me a good 
+      foundation in logic and problem-solving, but building actual apps — with real users, real UI, real 
+      bugs — is a whole new world I'm genuinely excited to explore. My first proper project is an engineering 
+      notes website("Notesportal") built with HTML/CSS/JavaScript and Django, letting students log in, browse notes by branch and semester,
+       with an admin panel to manage it all.
+
+ Coming from a data-heavy academic background to hands-on app development has been a fun shift, 
+ and I like that every project teaches me something I didn't know I needed. I'm still early in this
+  journey, but I show up curious, ready to break things, fix them, and figure out how it all works — one project at a time.</p>
+  </div>
+  <div class="about-stats">
+    <div><div class="num">00+</div><div class="label">PROJECTS SHIPPED</div></div>
+    <div><div class="num">00+</div><div class="label">HAPPY CLIENTS</div></div>
+    <div><div class="num">00</div><div class="label">YEARS EXPERIENCE</div></div>
+    <div><div class="num">00+</div><div class="label">TECHNOLOGIES</div></div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section class="projects" id="projects">
+  <div class="section-head">
+    <div class="eyebrow">SELECTED WORK</div>
+    <h2>Projects</h2>
+  </div>
+  <div class="project-grid">
+
+    <div class="project-card">
+      <span class="tag">WEB APP</span>
+      <h3>Digital Health Record Management System</h3>
+      <p>One or two sentences describing the problem this project solves and your role in building it.</p>
+      <div class="stack"><span>Streamlit</span><span>Python</span><span>Pandas</span></div>
+      <div class="links"><a href="https://digital-health-record-management-system.streamlit.app/">LIVE DEMO ↗</a><a href="https://github.com/amansharma2004/Digital-Health-Record-Management-System">GITHUB ↗</a></div>
+    </div>
+
+    <div class="project-card">
+      <span class="tag">WEBSITE</span>
+      <h3>Notes Portal</h3>
+      <p>One or two sentences describing the problem this project solves and your role in building it.</p>
+      <div class="stack"><span>HTML/CSS/JavaScript</span><span>jango</span></div>
+      <div class="links"><a href="#">LIVE DEMO ↗</a><a href="https://github.com/amansharma2004/Notes-portal">GITHUB ↗</a></div>
+    </div>
+
+    <div class="project-card">
+      <span class="tag">DATA ANALYTICS</span>
+      <h3>Student Performance Analysis</h3>
+      <p>One or two sentences describing the problem this project solves and your role in building it.</p>
+      <div class="stack"><span>Python</span><span>Excel</span><span>Power BI</span></div>
+      <div class="links"><a href="#">LIVE DEMO ↗</a><a href="https://github.com/amansharma2004/Student-Performance-Analysis">GITHUB ↗</a></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="skills" id="skills">
+  <div class="section-head">
+    <div class="eyebrow">TOOLKIT</div>
+    <h2>Skills</h2>
+  </div>
+  <div class="skill-cols">
+    <div>
+      <h4>FRONTEND</h4>
+      <ul>
+        <li>HTML / CSS / JavaScript</li>
+        <li>React</li>
+        <li>Tailwind CSS</li>
+      </ul>
+    </div>
+    <div>
+      <h4>BACKEND</h4>
+      <ul>
+        <LI> Django</li>
+        <li>REST APIs</li>
+      </ul>
+    </div>
+    <div>
+      <h4>DATA SCIENCE</h4>
+      <ul>
+        <li>Python</li>
+        <li>Pandas / NumPy</li>
+        <li>Data Visualization</li>
+      </ul>
+    </div>
+    <div>
+      <h4>ANALYSIS</h4>
+      <ul>
+        <li>MS Excel</li>
+        <li>SQL</li>
+        <li>POWER BI</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section class="experience" id="experience">
+  <div class="section-head">
+    <div class="eyebrow">JOURNEY</div>
+    <h2>Experience</h2>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="date">2026 — PRESENT</div>
+      <h3>MIS Executive</h3>
+      <div class="org">Indiavision
+        <p> [Noida, Uttar Pradesh]</p>
+      </div>
+    
+      <p>"Managed and processed comprehensive 
+        labor welfare datasets for UPBOCW and 
+        Delhi BOCW boards. Streamlined beneficiary 
+        records and analyzed large-scale data to 
+        ensure efficient tracking of government 
+        schemes and welfare distribution."</p>
+    </div>
+    <div class="timeline-item">
+      <div class="date">2022 — 2026</div>
+      <h3>Education / Earlier Role</h3>
+     <div class="org">Institution: Technocrats Institute of Technology</div>
+<p>Bachelor of Technology in Computer Science (Data Science) — built a strong 
+  foundation in programming, data structures, and analytical thinking. This is
+   where curiosity turned into code, and where I discovered my passion for building 
+   digital experiences and uncovering insights from data.</p>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="eyebrow" style="justify-content:center; display:flex;">GET IN TOUCH</div>
+  <h2>Let's build something together.</h2>
+  <p>Have a project in mind or just want to say hi? My inbox is always open.</p>
+  <a class="btn btn-primary" href="mailto:thakuramanomtty@gmail.com">SAY HELLO ↗</a>
+  <div class="contact-links">
+    <a href="mailto:thakuramanomtty@gmail.com">EMAIL</a>
+    <a href="https://github.com/amansharma2004" target="_blank">GITHUB</a>
+    <a href="https://www.linkedin.com/in/aman1299" target="_blank">LINKEDIN</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Aman Sharma. Built with care.
+</footer>
+
+</body>
+</html>
